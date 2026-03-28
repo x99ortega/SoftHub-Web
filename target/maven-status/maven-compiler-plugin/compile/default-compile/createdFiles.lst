@@ -1,0 +1,8 @@
+Modelo\Empresa.class
+Modelo\Inventario.class
+Modelo\Reporte.class
+Modelo\Software.class
+Modelo\Administrador.class
+Modelo\Asignacion.class
+com\mycompany\softhub_web\JakartaRestConfiguration.class
+com\mycompany\softhub_web\resources\JakartaEE8Resource.class
