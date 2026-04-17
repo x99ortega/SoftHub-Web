@@ -268,15 +268,14 @@ tbody td {
     font-size: 1.4rem;
 }
 
-/* ===== FOOTER ===== */
 .footer {
     background-color: #1a365d;
     color: #bee3f8;
     text-align: center;
     padding: 18px;
-    margin-top: auto;
     font-size: 0.85rem;
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
 }

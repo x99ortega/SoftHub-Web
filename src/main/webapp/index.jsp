@@ -29,13 +29,7 @@
                 <p>Administrar empresas y usuarios registrados en el sistema.</p>
                 <a href="${pageContext.request.contextPath}/adminUsuarios.jsp" class="btn btn-primary">Ir al módulo</a>
             </div>
-            <div class="card">
-                <h3>Asignaciones</h3>
-                <p>Consultar asignaciones de software a empresas.</p>
-                <a href="${pageContext.request.contextPath}/adminUsuarios.jsp" class="btn btn-primary">Ir al módulo</a>
-            </div>
-        </div>
-
+     
     </div>
 
     <%@ include file="lib/footer.jsp" %>

@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Modelo.Producto, java.util.LinkedList"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,50 +9,66 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
 </head>
 <body>
-
     <%@ include file="lib/header.jsp" %>
-
     <div class="container">
 
-        <!-- Formulario de registro/actualización -->
+        <%
+            Producto prod = (Producto) request.getAttribute("productoEditar");
+            String accion = (prod != null) ? "editar" : "agregar";
+        %>
+
         <div class="form-card">
-            <h2>Registrar / Actualizar Software</h2>
-            <form action="#" method="post">
+            <h2><%= (prod != null) ? "Editar Software" : "Registrar Nuevo Software" %></h2>
+            <form action="ServletProductos" method="post">
+                <input type="hidden" name="accion" value="<%= accion %>"/>
+
                 <div class="form-group">
-                    <label for="idSoftware">ID Software</label>
-                    <input type="text" id="idSoftware" name="idSoftware" placeholder="Ej: SW-001"/>
+                    <label>ID Software</label>
+                    <input type="text" name="idProducto"
+                           value="<%= prod != null ? prod.getIdProducto() : "" %>"
+                           <%= prod != null ? "readonly" : "" %>
+                           placeholder="Ej: SW-001" required/>
                 </div>
                 <div class="form-group">
-                    <label for="nombre">Nombre del Software</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ej: Microsoft Office"/>
+                    <label>Nombre del Software</label>
+                    <input type="text" name="nombre"
+                           value="<%= prod != null ? prod.getNombre() : "" %>"
+                           placeholder="Ej: Microsoft Office" required/>
                 </div>
                 <div class="form-group">
-                    <label for="version">Versión</label>
-                    <input type="text" id="version" name="version" placeholder="Ej: 2024"/>
+                    <label>Versión</label>
+                    <input type="text" name="version"
+                           value="<%= prod != null ? prod.getVersion() : "" %>"
+                           placeholder="Ej: 2024" required/>
                 </div>
                 <div class="form-group">
-                    <label for="tipoLicencia">Tipo de Licencia</label>
-                    <select id="tipoLicencia" name="tipoLicencia">
+                    <label>Tipo de Licencia</label>
+                    <select name="tipoLicencia" required>
                         <option value="">-- Seleccione --</option>
-                        <option value="Perpetua">Perpetua</option>
-                        <option value="Suscripcion">Suscripción</option>
-                        <option value="OpenSource">Open Source</option>
-                        <option value="Freemium">Freemium</option>
+                        <option value="Perpetua"    <%= prod != null && prod.getTipoLicencia().equals("Perpetua")    ? "selected" : "" %>>Perpetua</option>
+                        <option value="Suscripcion" <%= prod != null && prod.getTipoLicencia().equals("Suscripcion") ? "selected" : "" %>>Suscripción</option>
+                        <option value="OpenSource"  <%= prod != null && prod.getTipoLicencia().equals("OpenSource")  ? "selected" : "" %>>Open Source</option>
+                        <option value="Freemium"    <%= prod != null && prod.getTipoLicencia().equals("Freemium")    ? "selected" : "" %>>Freemium</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="cantidadDisponible">Cantidad Disponible</label>
-                    <input type="number" id="cantidadDisponible" name="cantidadDisponible" placeholder="Ej: 10" min="0"/>
+                    <label>Cantidad Disponible</label>
+                    <input type="number" name="cantidadDisponible"
+                           value="<%= prod != null ? prod.getCantidadDisponible() : "" %>"
+                           placeholder="Ej: 10" min="0" required/>
                 </div>
                 <div class="form-group">
-                    <label for="proveedor">Proveedor</label>
-                    <input type="text" id="proveedor" name="proveedor" placeholder="Ej: Microsoft"/>
+                    <label>Proveedor</label>
+                    <input type="text" name="proveedor"
+                           value="<%= prod != null ? prod.getProveedor() : "" %>"
+                           placeholder="Ej: Microsoft" required/>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" name="accion" value="registrar" class="btn btn-primary">Registrar</button>
-                    <button type="submit" name="accion" value="actualizar" class="btn btn-warning">Actualizar</button>
-                    <button type="reset" class="btn btn-danger">Limpiar</button>
+                    <button type="submit" class="btn btn-primary">
+                        <%= prod != null ? "Actualizar" : "Registrar" %>
+                    </button>
+                    <a href="ServletProductos" class="btn btn-danger">Limpiar</a>
                 </div>
             </form>
         </div>
@@ -59,31 +76,31 @@
         <!-- Filtros -->
         <div class="form-card">
             <h2>Filtrar Software</h2>
-            <form action="#" method="get" style="display:flex; gap:16px; flex-wrap:wrap; align-items:flex-end;">
-                <div class="form-group" style="flex:1; min-width:160px;">
-                    <label for="filtroNombre">Por Nombre</label>
-                    <input type="text" id="filtroNombre" name="filtroNombre" placeholder="Buscar nombre..."/>
+            <form action="ServletProductos" method="get" style="display:flex; gap:16px; flex-wrap:wrap; align-items:flex-end;">
+                <div class="form-group" style="flex:1; min-width:150px;">
+                    <label>Por Nombre</label>
+                    <input type="text" name="filtroNombre" placeholder="Buscar nombre..."/>
                 </div>
-                <div class="form-group" style="flex:1; min-width:160px;">
-                    <label for="filtroProveedor">Por Proveedor</label>
-                    <input type="text" id="filtroProveedor" name="filtroProveedor" placeholder="Buscar proveedor..."/>
+                <div class="form-group" style="flex:1; min-width:150px;">
+                    <label>Por Proveedor</label>
+                    <input type="text" name="filtroProveedor" placeholder="Buscar proveedor..."/>
                 </div>
-                <div class="form-group" style="flex:1; min-width:160px;">
-                    <label for="filtroVersion">Por Versión</label>
-                    <input type="text" id="filtroVersion" name="filtroVersion" placeholder="Ej: 2024"/>
+                <div class="form-group" style="flex:1; min-width:150px;">
+                    <label>Por Versión</label>
+                    <input type="text" name="filtroVersion" placeholder="Ej: 2024"/>
                 </div>
-                <div class="form-group" style="flex:1; min-width:160px;">
-                    <label for="filtroStock">Stock mínimo</label>
-                    <input type="number" id="filtroStock" name="filtroStock" placeholder="Umbral..." min="0"/>
+                <div class="form-group" style="flex:1; min-width:150px;">
+                    <label>Stock menor a</label>
+                    <input type="number" name="filtroStock" placeholder="Umbral..." min="0"/>
                 </div>
                 <div style="display:flex; gap:8px;">
                     <button type="submit" class="btn btn-primary">Filtrar</button>
-                    <a href="${pageContext.request.contextPath}/adminProductos.jsp" class="btn btn-warning">Limpiar</a>
+                    <a href="ServletProductos" class="btn btn-warning">Limpiar</a>
                 </div>
             </form>
         </div>
 
-        <!-- Tabla de listado -->
+        <!-- Tabla -->
         <div class="table-card">
             <h2>Listado de Software</h2>
             <table>
@@ -99,19 +116,46 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Los datos se cargarán dinámicamente con el Servlet -->
+                <%
+                    LinkedList<Producto> lista = (LinkedList<Producto>) request.getAttribute("listaProductos");
+                    if (lista == null || lista.isEmpty()) {
+                %>
                     <tr>
                         <td colspan="7" style="text-align:center; color:#718096; padding:20px;">
-                            No hay registros disponibles.
+                            No hay registros. Agrega un software arriba.
                         </td>
                     </tr>
+                <%
+                    } else {
+                        for (Producto p : lista) {
+                %>
+                    <tr>
+                        <td><%= p.getIdProducto() %></td>
+                        <td><%= p.getNombre() %></td>
+                        <td><%= p.getVersion() %></td>
+                        <td><%= p.getTipoLicencia() %></td>
+                        <td><%= p.getCantidadDisponible() %></td>
+                        <td><%= p.getProveedor() %></td>
+                        <td>
+                            <a href="ServletProductos?editar=<%= p.getIdProducto() %>"
+                               class="btn btn-warning" style="padding:6px 12px; font-size:0.8rem;">Editar</a>
+                            <form action="ServletProductos" method="post" style="display:inline;">
+                                <input type="hidden" name="accion" value="eliminar"/>
+                                <input type="hidden" name="idProducto" value="<%= p.getIdProducto() %>"/>
+                                <button type="submit" class="btn btn-danger"
+                                        style="padding:6px 12px; font-size:0.8rem;"
+                                        onclick="return confirm('¿Eliminar este software?')">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <%
+                        }
+                    }
+                %>
                 </tbody>
             </table>
         </div>
-
     </div>
-
     <%@ include file="lib/footer.jsp" %>
-
 </body>
 </html>

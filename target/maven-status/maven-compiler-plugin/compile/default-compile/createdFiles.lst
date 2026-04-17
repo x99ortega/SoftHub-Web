@@ -1,8 +1,13 @@
-Modelo\Empresa.class
 Modelo\Inventario.class
 Modelo\Reporte.class
-Modelo\Software.class
+Servlets\ServletProductos.class
+Modelo\Usuario.class
 Modelo\Administrador.class
 Modelo\Asignacion.class
-com\mycompany\softhub_web\JakartaRestConfiguration.class
-com\mycompany\softhub_web\resources\JakartaEE8Resource.class
+Modelo\GestionarProductos.class
+Modelo\GestionarUsuarios.class
+Modelo\Empresa.class
+Modelo\Software.class
+Modelo\Producto.class
+Servlets\ServletUsuarios.class
+Modelo\Persona.class

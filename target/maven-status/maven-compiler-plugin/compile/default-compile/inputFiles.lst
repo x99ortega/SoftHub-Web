@@ -1,8 +1,13 @@
-C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\com\mycompany\softhub_web\JakartaRestConfiguration.java
-C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\com\mycompany\softhub_web\resources\JakartaEE8Resource.java
 C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\Administrador.java
 C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\Asignacion.java
 C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\Empresa.java
+C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\GestionarProductos.java
+C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\GestionarUsuarios.java
 C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\Inventario.java
+C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\Persona.java
+C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\Producto.java
 C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\Reporte.java
 C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\Software.java
+C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Modelo\Usuario.java
+C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Servlets\ServletProductos.java
+C:\Users\fredy\OneDrive\Documentos\NetBeansProjects\SoftHub_Web\src\main\java\Servlets\ServletUsuarios.java
