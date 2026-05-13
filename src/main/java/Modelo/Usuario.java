@@ -1,9 +1,8 @@
 package Modelo;
 
 /**
- * Clase Usuario (extends Persona)
- * Representa una Empresa en SoftHub Solutions
- * @author Victor Raphael Cuaran Jossa - Freddy Andres Burbano
+
+ * @author fredy
  */
 public class Usuario extends Persona {
 

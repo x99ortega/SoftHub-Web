@@ -1,9 +1,8 @@
 package Modelo;
 
 /**
- * Clase Persona (Clase Base)
- * Proyecto: SoftHub Solutions
- * @author Victor Raphael Cuaran Jossa - Freddy Andres Burbano
+
+ * @author fredy
  */
 public class Persona {
 

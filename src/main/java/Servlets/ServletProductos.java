@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * ServletProductos - CRUD completo de Software en memoria
- * Proyecto: SoftHub Solutions
- * @author Victor Raphael Cuaran Jossa - Freddy Andres Burbano
+
+ * @author fredy
  */
 @WebServlet(name = "ServletProductos", urlPatterns = {"/ServletProductos"})
 public class ServletProductos extends HttpServlet {
 
+    
     private static GestionarProductos gestor = new GestionarProductos();
 
     @Override
@@ -53,7 +53,8 @@ public class ServletProductos extends HttpServlet {
         String filtroStock     = request.getParameter("filtroStock");
         String editarId        = request.getParameter("editar");
 
-        LinkedList<Producto> lista = gestor.listarTodos();
+        LinkedList<Producto> lista;
+
 
         if (filtroNombre != null && !filtroNombre.isEmpty()) {
             lista = gestor.filtrarNombre(filtroNombre);
@@ -63,8 +64,12 @@ public class ServletProductos extends HttpServlet {
             lista = gestor.filtrarVersion(filtroVersion);
         } else if (filtroStock != null && !filtroStock.isEmpty()) {
             lista = gestor.filtrarStockBajo(Integer.parseInt(filtroStock));
+        } else {
+       
+            lista = gestor.listarTodos();
         }
 
+       
         if (editarId != null) {
             Producto p = gestor.buscar(editarId);
             if (p != null) request.setAttribute("productoEditar", p);
@@ -74,6 +79,7 @@ public class ServletProductos extends HttpServlet {
         request.getRequestDispatcher("adminProductos.jsp").forward(request, response);
     }
 
+  
     private void agregar(HttpServletRequest request) {
         String id       = request.getParameter("idProducto");
         String nombre   = request.getParameter("nombre");
@@ -91,11 +97,13 @@ public class ServletProductos extends HttpServlet {
         gestor.agregar(p);
     }
 
+    
     private void eliminar(HttpServletRequest request) {
         String id = request.getParameter("idProducto");
         gestor.eliminar(id);
     }
 
+  
     private void editar(HttpServletRequest request) {
         String id       = request.getParameter("idProducto");
         String nombre   = request.getParameter("nombre");

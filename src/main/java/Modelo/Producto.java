@@ -1,9 +1,8 @@
 package Modelo;
 
 /**
- * Clase Producto (Clase Base para Software)
- * Proyecto: SoftHub Solutions
- * @author Victor Raphael Cuaran Jossa - Freddy Andres Burbano
+
+ * @author fredy
  */
 public class Producto {
 

@@ -4,32 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoftHub Solutions - Inicio</title>
+    <title>SoftHub Solutions</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
 </head>
 <body>
 
     <%@ include file="lib/header.jsp" %>
 
-    <div class="container">
+    <div class="hero">
+        <h1>Bienvenido a <span>SoftHub</span><br/>Solutions</h1>
+        <p>Gestiona tu inventario de software empresarial de forma eficiente, organizada y en tiempo real.</p>
+    </div>
 
-        <div class="hero">
-            <h1>Bienvenido a SoftHub Solutions</h1>
-            <p>Sistema de gestión de inventario de software empresarial</p>
-        </div>
-
+    <div class="container" style="padding-top:0;">
         <div class="cards-grid">
+
             <div class="card">
                 <h3>Gestión de Software</h3>
-                <p>Registrar, listar, actualizar y eliminar software del inventario.</p>
-                <a href="${pageContext.request.contextPath}/adminProductos.jsp" class="btn btn-primary">Ir al módulo</a>
+                <p>Registra, lista, actualiza y elimina software del inventario. Filtra por nombre, proveedor, versión y stock.</p>
+                <a href="${pageContext.request.contextPath}/ServletProductos" class="btn btn-primary">Ir al módulo →</a>
             </div>
+
             <div class="card">
                 <h3>Gestión de Empresas</h3>
-                <p>Administrar empresas y usuarios registrados en el sistema.</p>
-                <a href="${pageContext.request.contextPath}/adminUsuarios.jsp" class="btn btn-primary">Ir al módulo</a>
+                <p>Administra las empresas y usuarios registrados en el sistema. Busca por razón social.</p>
+                <a href="${pageContext.request.contextPath}/ServletUsuarios" class="btn btn-primary">Ir al módulo →</a>
             </div>
-     
+
+        </div>
     </div>
 
     <%@ include file="lib/footer.jsp" %>

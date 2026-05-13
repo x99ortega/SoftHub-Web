@@ -11,19 +11,22 @@
 
     <div class="login-wrapper">
         <div class="login-box">
-            <img src="${pageContext.request.contextPath}/images/banner.jpg" alt="Logo SoftHub" height="70" style="margin-bottom:16px;"/>
-            <h2>Iniciar Sesión</h2>
+            <div class="login-logo">
+             <img src="${pageContext.request.contextPath}/images/banner.png" alt="SoftHub Logo"/>
+                <h2>SoftHub Solutions</h2>
+                <p>Ingresa tus credenciales para continuar</p>
+            </div>
 
-            <form action="#" method="post">
-                <div class="form-group" style="text-align:left;">
-                    <label for="usuario">Usuario</label>
-                    <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario"/>
+            <form action="${pageContext.request.contextPath}/index.jsp" method="post">
+                <div class="form-group" style="margin-bottom:16px;">
+                    <label>Usuario</label>
+                    <input type="text" name="usuario" placeholder="Ingresa tu usuario"/>
                 </div>
-                <div class="form-group" style="text-align:left;">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña"/>
+                <div class="form-group" style="margin-bottom:20px;">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" placeholder="••••••••"/>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width:100%; margin-top:10px;">Ingresar</button>
+                <button type="submit" class="btn btn-primary">Ingresar al sistema</button>
             </form>
         </div>
     </div>

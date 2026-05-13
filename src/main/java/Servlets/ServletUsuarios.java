@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * ServletUsuarios - CRUD completo de Empresas en memoria
- * Proyecto: SoftHub Solutions
- * @author Victor Raphael Cuaran Jossa - Freddy Andres Burbano
+
+ * @author fredy
  */
 @WebServlet(name = "ServletUsuarios", urlPatterns = {"/ServletUsuarios"})
 public class ServletUsuarios extends HttpServlet {
+
 
     private static GestionarUsuarios gestor = new GestionarUsuarios();
 
@@ -50,11 +50,16 @@ public class ServletUsuarios extends HttpServlet {
         String buscar   = request.getParameter("buscar");
         String editarId = request.getParameter("editar");
 
-        LinkedList<Usuario> lista = gestor.listarTodos();
+        LinkedList<Usuario> lista;
+
 
         if (buscar != null && !buscar.isEmpty()) {
             lista = gestor.buscarPorNombre(buscar);
+        } else {
+           
+            lista = gestor.listarTodos();
         }
+
 
         if (editarId != null) {
             Usuario u = gestor.buscar(editarId);
@@ -64,6 +69,7 @@ public class ServletUsuarios extends HttpServlet {
         request.setAttribute("listaUsuarios", lista);
         request.getRequestDispatcher("adminUsuarios.jsp").forward(request, response);
     }
+
 
     private void agregar(HttpServletRequest request) {
         String id          = request.getParameter("idEmpresa");
@@ -81,10 +87,12 @@ public class ServletUsuarios extends HttpServlet {
         gestor.agregar(u);
     }
 
+
     private void eliminar(HttpServletRequest request) {
         String id = request.getParameter("idEmpresa");
         gestor.eliminar(id);
     }
+
 
     private void editar(HttpServletRequest request) {
         String id          = request.getParameter("idEmpresa");
