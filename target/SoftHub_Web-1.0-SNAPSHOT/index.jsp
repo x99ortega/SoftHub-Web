@@ -1,4 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String usuarioActivo = (String) session.getAttribute("usuarioActivo");
+    if (usuarioActivo == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,33 +15,28 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
 </head>
 <body>
+<%@ include file="lib/header.jsp" %>
+<div class="container">
 
-    <%@ include file="lib/header.jsp" %>
-
-    <div class="hero">
-        <h1>Bienvenido a <span>SoftHub</span><br/>Solutions</h1>
-        <p>Gestiona tu inventario de software empresarial de forma eficiente, organizada y en tiempo real.</p>
+    <div class="module-grid">
+        <a href="${pageContext.request.contextPath}/ServletProductos" class="module-card">
+            <h3>Gestion de Software</h3>
+            <p>Registra, actualiza, elimina y filtra el inventario de software empresarial.</p>
+            <span class="btn btn-primary btn-sm">Ir al modulo</span>
+        </a>
+        <a href="${pageContext.request.contextPath}/ServletUsuarios" class="module-card">
+            <h3>Gestion de Empresas</h3>
+            <p>Administra las empresas registradas en el sistema.</p>
+            <span class="btn btn-primary btn-sm">Ir al modulo</span>
+        </a>
+        <a href="${pageContext.request.contextPath}/asignacion.jsp" class="module-card">
+            <h3>Asignaciones</h3>
+            <p>Asigna software a empresas y genera reportes de asignacion.</p>
+            <span class="btn btn-primary btn-sm">Ir al modulo</span>
+        </a>
     </div>
 
-    <div class="container" style="padding-top:0;">
-        <div class="cards-grid">
-
-            <div class="card">
-                <h3>Gestión de Software</h3>
-                <p>Registra, lista, actualiza y elimina software del inventario. Filtra por nombre, proveedor, versión y stock.</p>
-                <a href="${pageContext.request.contextPath}/ServletProductos" class="btn btn-primary">Ir al módulo →</a>
-            </div>
-
-            <div class="card">
-                <h3>Gestión de Empresas</h3>
-                <p>Administra las empresas y usuarios registrados en el sistema. Busca por razón social.</p>
-                <a href="${pageContext.request.contextPath}/ServletUsuarios" class="btn btn-primary">Ir al módulo →</a>
-            </div>
-
-        </div>
-    </div>
-
-    <%@ include file="lib/footer.jsp" %>
-
+</div>
+<%@ include file="lib/footer.jsp" %>
 </body>
 </html>

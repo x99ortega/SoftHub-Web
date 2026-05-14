@@ -9,7 +9,7 @@ public class Usuario extends Persona {
     private String sector;
     private String tipoEmpresa;
 
-    // Constructor
+   
     public Usuario(String idEmpresa, String razonSocial, String nit,
                    String email, String ciudad, String telefono,
                    String sector, String tipoEmpresa) {
@@ -18,7 +18,7 @@ public class Usuario extends Persona {
         this.tipoEmpresa = tipoEmpresa;
     }
 
-    // Getters y Setters
+  
     public String getSector() { return sector; }
     public void setSector(String sector) { this.sector = sector; }
 

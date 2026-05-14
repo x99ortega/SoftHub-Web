@@ -13,7 +13,7 @@ public class Producto {
     private int    cantidadDisponible;
     private String proveedor;
 
-    // Constructor
+
     public Producto(String idProducto, String nombre, String version,
                     String tipoLicencia, int cantidadDisponible, String proveedor) {
         this.idProducto         = idProducto;
@@ -24,7 +24,7 @@ public class Producto {
         this.proveedor          = proveedor;
     }
 
-    // Getters y Setters
+   
     public String getIdProducto() { return idProducto; }
     public void setIdProducto(String idProducto) { this.idProducto = idProducto; }
 

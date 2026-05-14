@@ -13,7 +13,7 @@ public class Persona {
     private String ciudad;
     private String telefono;
 
-    // Constructor
+
     public Persona(String idEmpresa, String razonSocial, String nit,
                    String email, String ciudad, String telefono) {
         this.idEmpresa   = idEmpresa;
@@ -24,7 +24,7 @@ public class Persona {
         this.telefono    = telefono;
     }
 
-    // Getters y Setters
+    
     public String getIdEmpresa() { return idEmpresa; }
     public void setIdEmpresa(String idEmpresa) { this.idEmpresa = idEmpresa; }
 
